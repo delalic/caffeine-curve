@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Caffeine Curve — A Simpler Caffeine Tracker for iPhone & Apple Watch</title>
+<meta name="description" content="See your active caffeine from Apple Health in real time. Track how it changes throughout the day, hit your peak, and know when you're cleared for sleep." />
+<meta property="og:title" content="Caffeine Curve" />
+<meta property="og:description" content="A simpler caffeine tracker for iPhone & Apple Watch. Reads from Apple Health, shows live curves, peak timing, and sleep-ready alerts." />
+<meta property="og:image" content="assets/logo-bean-on-gradient.png" />
+<meta name="theme-color" content="#000000" />
+<link rel="icon" type="image/png" href="assets/logo-bean-orange.png" />
+<link rel="apple-touch-icon" href="assets/logo-bean-on-gradient.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============================================================ NAV -->
+<nav class="nav">
+  <div class="wrap nav__inner">
+    <a href="./" class="nav__brand" aria-label="Caffeine Curve">
+      <span class="word">CAFFEINE</span>
+      <span class="sub">Curve</span>
+    </a>
+    <div class="nav__links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="releases.html">Release notes</a>
+      <a href="https://apps.apple.com/us/app/caffeine-curve/id6760567892" class="nav__cta btn-ghost" style="padding:8px 16px; font-size:13px;">Download</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================ HERO -->
+<header class="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap hero__inner">
+
+    <div class="hero__copy">
+      <div class="hero__eyebrow">
+        <span class="dot"></span>
+        Now on iPhone &amp; Apple Watch
+      </div>
+      <h1>Know exactly how much caffeine is <span class="accent">still in you.</span></h1>
+      <p class="hero__lede">
+        Caffeine Curve reads your dietary entries from Apple Health and uses an absorption + elimination model
+        to estimate how much caffeine is still active right now — so you can decide on another coffee, hit your
+        focus peak, or stop in time for sleep.
+      </p>
+
+      <div class="hero__cta-row">
+        <a class="appstore-badge" href="https://apps.apple.com/us/app/caffeine-curve/id6760567892" aria-label="Download on the App Store">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          <div>
+            <div class="small">Download on the</div>
+            <div class="big">App Store</div>
+          </div>
+        </a>
+        <a class="btn-ghost" href="#features">
+          See features
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+      </div>
+
+      <div class="hero__meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Free, no ads, no IAP</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="17" r="1.2" fill="currentColor"/></svg>iOS 16.6+ &amp; watchOS 10.6+</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>5.0 on the App Store</span>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <!-- Animated background gauge -->
+      <svg class="hero__gauge-bg" viewBox="0 0 400 400" style="position:absolute; width:520px; height:520px; opacity:0.18; filter:blur(2px);">
+        <defs>
+          <linearGradient id="gaugeGradHero" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FFC56B"/>
+            <stop offset="50%" stop-color="#FF9F1C"/>
+            <stop offset="100%" stop-color="#E0691A"/>
+          </linearGradient>
+        </defs>
+        <path d="M 60 280 A 160 160 0 1 1 340 280" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="20" stroke-linecap="round"/>
+        <path d="M 60 280 A 160 160 0 1 1 340 280" fill="none" stroke="url(#gaugeGradHero)" stroke-width="20" stroke-linecap="round"
+              stroke-dasharray="700" stroke-dashoffset="700">
+          <animate attributeName="stroke-dashoffset" from="700" to="280" dur="2.4s" begin="0.3s" fill="freeze" calcMode="spline" keySplines="0.32 0.72 0 1" keyTimes="0;1" values="700;280"/>
+        </path>
+      </svg>
+
+      <div class="hero__phone">
+        <img src="assets/screen-home.png" alt="Caffeine Curve home screen showing 129 mg active caffeine in the moderate zone" />
+      </div>
+      <div class="hero__watch">
+        <img src="assets/screen-watch.png" alt="Caffeine Curve on Apple Watch showing 233 mg active in the high zone" />
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- ============================================================ HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="section-eyebrow">How it works</span>
+      <h2 class="section-title">A live picture of your <span class="accent">active caffeine</span> — not just intake.</h2>
+      <p class="section-lede">
+        Caffeine Curve doesn't ask you to log drinks. It reads what's already in Apple Health and runs the math
+        for you using a pharmacokinetic absorption &amp; elimination model.
+      </p>
+    </div>
+
+    <div class="how__grid">
+      <div class="how__card reveal">
+        <span class="step">1</span>
+        <h3>Log to Apple Health</h3>
+        <p>Use any tracker that writes to Health — MyFitnessPal, Cronometer, others — or add it manually under Nutrition → Caffeine.</p>
+      </div>
+      <div class="how__card reveal" style="transition-delay:80ms;">
+        <span class="step">2</span>
+        <h3>The curve appears</h3>
+        <p>Caffeine Curve estimates absorption (0–60 min) and elimination (~5h half-life), tuned to your sensitivity profile.</p>
+      </div>
+      <div class="how__card reveal" style="transition-delay:160ms;">
+        <span class="step">3</span>
+        <h3>Check at a glance</h3>
+        <p>Open the app, glance at your watch face, or peek at the Lock Screen widget. See peak time and when you're sleep-ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FEATURES -->
+<section id="features" class="features">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="section-eyebrow">Features</span>
+      <h2 class="section-title">Built for quick checks. <br/>Designed to disappear.</h2>
+    </div>
+
+    <div class="features__grid">
+
+      <div class="feature reveal">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+        </div>
+        <h3>Live caffeine gauge</h3>
+        <p>Real-time mg active, with trend arrow showing whether you're rising or falling.</p>
+      </div>
+
+      <div class="feature reveal" style="transition-delay:60ms;">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 4 7-9"/><path d="M14 7h6v6"/></svg>
+        </div>
+        <h3>Caffeine Trend chart</h3>
+        <p>See the full curve of your day — past, present, and projected future levels.</p>
+      </div>
+
+      <div class="feature reveal" style="transition-delay:120ms;">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <h3>Peak &amp; sleep timing</h3>
+        <p>Know when your coffee hits hardest, and the exact time you'll drop below your sleep threshold.</p>
+      </div>
+
+      <div class="feature reveal">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="3"/><circle cx="12" cy="17" r="1.2" fill="currentColor"/></svg>
+        </div>
+        <h3>Apple Watch app</h3>
+        <p>Real-time gauge, clearance estimate, and freshness indicator — right on your wrist.</p>
+      </div>
+
+      <div class="feature reveal" style="transition-delay:60ms;">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>
+        </div>
+        <h3>Home Screen widgets</h3>
+        <p>Gauges, trend chart, sleep-clear time. Small, medium, large — pick your scale.</p>
+      </div>
+
+      <div class="feature reveal" style="transition-delay:120ms;">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        </div>
+        <h3>Smart notifications</h3>
+        <p>A ping at peak. A ping when you're cleared for sleep. Nothing else.</p>
+      </div>
+
+      <div class="feature reveal">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/></svg>
+        </div>
+        <h3>5 sensitivity profiles</h3>
+        <p>From Very Sensitive to Very Tolerant — match the model to your body chemistry.</p>
+      </div>
+
+      <div class="feature reveal" style="transition-delay:60ms;">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z"/><path d="M5 17l1 3M19 16l1 3M3 21l1-2"/></svg>
+        </div>
+        <h3>Try-it demo mode</h3>
+        <p>Explore the full app populated with sample data before logging a single thing.</p>
+      </div>
+
+      <div class="feature reveal" style="transition-delay:120ms;">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/><path d="M16 4l4 4"/></svg>
+        </div>
+        <h3>Watch complications</h3>
+        <p>Rectangular and dial-top complications show your peak time or sleep-ready time at a glance.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SHOWCASE (screens) -->
+<section>
+  <div class="wrap">
+    <div class="reveal">
+      <span class="section-eyebrow">A look around</span>
+      <h2 class="section-title">Calm where it counts. <br/><span class="accent">Information where it matters.</span></h2>
+    </div>
+
+    <div class="showcase__row">
+      <div class="showcase__card reveal">
+        <div class="showcase__phone"><img src="assets/screen-home.png" alt="Home screen with active caffeine gauge"/></div>
+        <div class="showcase__label"><strong>Home</strong>Live gauge, status pill, trend chart.</div>
+      </div>
+      <div class="showcase__card reveal" style="transition-delay:60ms;">
+        <div class="showcase__phone"><img src="assets/screen-empty-state.png" alt="Empty state explaining how to log caffeine"/></div>
+        <div class="showcase__label"><strong>Onboarding</strong>Connect Health, or try with sample data.</div>
+      </div>
+      <div class="showcase__card reveal" style="transition-delay:120ms;">
+        <div class="showcase__phone"><img src="assets/screen-settings.png" alt="Settings screen with sensitivity profiles"/></div>
+        <div class="showcase__label"><strong>Sensitivity</strong>Five profiles, calibrated for you.</div>
+      </div>
+      <div class="showcase__card reveal" style="transition-delay:180ms;">
+        <div class="showcase__phone"><img src="assets/screen-about.png" alt="About screen explaining the science"/></div>
+        <div class="showcase__label"><strong>The science</strong>Absorption, elimination, half-life.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PRIVACY -->
+<section class="privacy-callout">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="privacy-callout__shield" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <h2>No tracking. No ads. No data leaves your device.</h2>
+      <p>
+        Caffeine Curve doesn't have a server because it doesn't need one. Settings stay on your phone.
+        Your caffeine data stays in Apple Health.
+      </p>
+      <div class="privacy-callout__chips">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> No analytics SDKs</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> No ads</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> No in-app purchases</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> No AI training on your data</span>
+      </div>
+      <p style="margin-top:24px;">
+        <a href="privacy.html" style="color:var(--cc-brand); font-weight:600;">Read the full privacy policy →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ WHAT'S NEW -->
+<section class="whatsnew">
+  <div class="wrap whatsnew__inner">
+    <div class="reveal">
+      <div class="whatsnew__version">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        New in 2.2
+      </div>
+      <h2 class="section-title">Liquid Glass &amp; <br/><span class="accent">Smart Notifications.</span></h2>
+      <p class="section-lede">A premium visual refresh, peak &amp; sleep alerts, richer Watch complications, and a freshness indicator so you always know when your watch last synced.</p>
+      <a href="releases.html" class="whatsnew__link">
+        See full release notes
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="whatsnew__items">
+      <div class="whatsnew__item reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        </div>
+        <div>
+          <h4>Smart notifications</h4>
+          <p>Peak alerts when your caffeine maxes out. Sleep-ready alerts when you drop below threshold.</p>
+        </div>
+      </div>
+      <div class="whatsnew__item reveal" style="transition-delay:60ms;">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 9 9"/></svg>
+        </div>
+        <div>
+          <h4>Liquid Glass design</h4>
+          <p>Cards, buttons, and badges across iPhone &amp; Watch get a premium native finish. New tinted icons.</p>
+        </div>
+      </div>
+      <div class="whatsnew__item reveal" style="transition-delay:120ms;">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <div>
+          <h4>New Watch complications</h4>
+          <p>Rectangular &amp; dial-top complications show exact peak / sleep-ready times. Plus a freshness indicator.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FINAL CTA -->
+<section class="cta-final">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>Find your <span class="accent">curve.</span></h2>
+      <p>Free. No ads. No in-app purchases. Built from a real daily need.</p>
+      <div class="row">
+        <a class="appstore-badge" href="https://apps.apple.com/us/app/caffeine-curve/id6760567892" aria-label="Download on the App Store">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          <div>
+            <div class="small">Download on the</div>
+            <div class="big">App Store</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER -->
+<footer>
+  <div class="wrap footer__inner">
+    <div class="footer__copy">© <span id="year">2026</span> Haris Delalić · Caffeine Curve</div>
+    <div class="footer__links">
+      <a href="releases.html">Release notes</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="mailto:caffeine-curve-privacy@delalic.com">Contact</a>
+      <a href="https://apps.apple.com/us/app/caffeine-curve/id6760567892">App Store</a>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
